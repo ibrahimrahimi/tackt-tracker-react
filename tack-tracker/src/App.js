@@ -1,7 +1,11 @@
+import Header from "./components/Header";
+import Footer from "./components/Footer"
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello From Here</h1>
+    <div className="container">
+      <Header title={'React Task Tracker'}/>
+      <Footer />
     </div>
   );
 }
