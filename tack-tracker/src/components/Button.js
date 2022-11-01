@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const Button = ({color, text, onClick}) => {
-
+  
   return (
     <button
       onClick={onClick}
