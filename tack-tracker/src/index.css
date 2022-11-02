@@ -446,3 +446,8 @@ h1 {
 #logo {
   max-height: 100px;
 }
+
+.notasks {
+  padding: 5px;
+  text-align: center;
+}

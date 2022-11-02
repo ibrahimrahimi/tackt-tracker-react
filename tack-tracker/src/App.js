@@ -17,12 +17,18 @@ function App() {
         day: 'Nov 5th at 12:00',
         reminder: true,
     }
-  ])
+  ]);
+
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
 
   return (
     <div className="container">
       <Header title={'React Task Tracker'}/>
-      <Tasks tasks={tasks} />
+      {tasks.length > 0 ?
+        <Tasks tasks={tasks} onDelete={deleteTask}/>
+         : <h3 className='notasks' style={{ alignItems: 'center'}}>No Tasks To Do </h3>}
       <Footer />
     </div>
   );
