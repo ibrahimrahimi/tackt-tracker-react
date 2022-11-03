@@ -1,24 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
 import AddTask from './components/AddTask';
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Tarvosa Report Customization',
-      day: 'Nov 3rd at 12:00',
-        reminder: true,
-    },
-    {
-        id: 2,
-        text: 'Login Page for Dashborad',
-        day: 'Nov 5th at 12:00',
-        reminder: true,
+  const [showAddTask, setShowAddTask] = useState(false)
+  const [tasks, setTasks] = useState([]);
+
+  // Fetch Tasks
+  useEffect(() => {
+    const fetchTasks = async() => {
+      const res = await fetch('http://localhost:5000/tasks')
+      const data = await res.json()
+
+      console.log(data)
     }
-  ]);
+
+    fetchTasks()
+  }, [])
 
   // Add Task
   const addTask = (task) => {
@@ -43,10 +43,14 @@ function App() {
 
   return (
     <div className="container">
-      <Header title={'React Task Tracker'}/>
-      <AddTask onAdd={addTask}/>
+      <Header 
+        title={'React Task Tracker'} 
+        onAdd={() => setShowAddTask(!showAddTask)} 
+        showAdd={showAddTask}
+      />
+      {showAddTask && <AddTask  onAdd={addTask}/>}
       {tasks.length > 0 ?
-        <Tasks 
+        <Tasks
         tasks={tasks} 
         onDelete={deleteTask}
         onToggle={toggleReminder}
