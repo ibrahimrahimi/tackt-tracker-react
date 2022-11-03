@@ -5,12 +5,6 @@
       "text": "Tarvosa Report Customization",
       "day": "Nov 3rd at 12:00",
       "reminder": true
-    },
-    {
-      "id": 2,
-      "text": "Tarvosa Customization",
-      "day": "Nov 6rd at 15:00",
-      "reminder": true
     }
   ]
 }
