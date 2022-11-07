@@ -1,36 +1,6 @@
 {
   "tasks": [
     {
-      "text": "test",
-      "day": "test",
-      "reminder": true,
-      "id": 1
-    },
-    {
-      "text": "dfgsdg",
-      "day": "sdfgs",
-      "reminder": false,
-      "id": 2
-    },
-    {
-      "text": "tretdfgdfg",
-      "day": "sdfgs",
-      "reminder": false,
-      "id": 3
-    },
-    {
-      "text": "sfds",
-      "day": "sdfs",
-      "reminder": true,
-      "id": 4
-    },
-    {
-      "text": "sfsa",
-      "day": "afsd",
-      "reminder": true,
-      "id": 5
-    },
-    {
       "text": "afs",
       "day": "sadfafasfsaf",
       "reminder": true,
@@ -39,7 +9,7 @@
     {
       "text": "Clean You code",
       "day": "today",
-      "reminder": false,
+      "reminder": true,
       "id": 7
     }
   ]

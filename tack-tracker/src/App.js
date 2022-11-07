@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
 import AddTask from './components/AddTask';
+import About from  './components/About';
+
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -46,10 +49,6 @@ function App() {
 
     const data = await res.json()
     setTasks([...tasks, data])
-
-    // const id = Math.floor(Math.random() * 10000 + 1)
-    // const newTask = {id, ...task}
-    // setTasks([...tasks, newTask])
   }
 
   // Delete Task
@@ -80,22 +79,32 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <Header 
-        title={'React Task Tracker'} 
-        onAdd={() => setShowAddTask(!showAddTask)} 
-        showAdd={showAddTask}
-      />
-      {showAddTask && <AddTask  onAdd={addTask}/>}
-      {tasks.length > 0 ?
-        <Tasks
-        tasks={tasks} 
-        onDelete={deleteTask}
-        onToggle={toggleReminder}
-        />
-         : <h3 className='notasks' style={{ alignItems: 'center'}}>No Tasks To Do </h3>}
-      <Footer />
-    </div>
+    <Router>
+        <div className="container">
+          <Header 
+            title={'React Task Tracker'} 
+            onAdd={() => setShowAddTask(!showAddTask)} 
+            showAdd={showAddTask}
+          />
+          <Routes>
+            <Route path='/' element={
+              <>
+              {showAddTask && <AddTask  onAdd={addTask}/>}
+              {tasks.length > 0 ?
+                <Tasks
+                tasks={tasks} 
+                onDelete={deleteTask}
+                onToggle={toggleReminder}
+                />
+                : <h3 className='notasks' style={{ alignItems: 'center'}}>No Tasks To Do </h3>}
+              </>
+              } 
+            />
+            <Route path='/about' element={<About/>} />
+          </Routes>
+          <Footer />
+        </div>
+    </Router>
   );
 }
 
